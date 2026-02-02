@@ -1,6 +1,6 @@
 # 🎓 Cisco Ethical Hacker: Itinerario de Especialización
 
-> **Repitiorio Unificado de Formación en Ciberseguridad**
+> **Repositorio Unificado de Formación en Ciberseguridad**
 
 Este repositorio centraliza el conocimiento, laboratorios y herramientas desarrollados durante el curso de **Cisco Ethical Hacker**, estructurado para un perfil de Administración de Sistemas y Hacking Ético.
 
