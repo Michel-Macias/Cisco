@@ -1,0 +1,354 @@
+WEBVTT
+X-TIMESTAMP-MAP=LOCAL:00:00:00.000,MPEGTS:0
+
+00:07.900 --> 00:13.460
+En este laboratorio, utilizará scapy, una herramienta potente y
+flexible de creación de paquetes y 
+
+00:13.470 --> 00:15.970
+escaneo de redes basada en Python. 
+
+00:16.549 --> 00:20.700
+Con scapy, puede construir paquetes personalizados con
+protocolos y campos específicos. 
+
+00:21.680 --> 00:26.850
+Esto la convierte en una herramienta ideal para probar
+y analizar las comunicaciones de red.
+
+00:27.500 --> 00:32.869
+En la primera parte, investigará algunas de las capacidades de scapy
+y revisará el contenido
+
+00:32.880 --> 00:34.400
+del encabezado del4 paquete IPv4. 
+
+00:34.869 --> 00:40.389
+En la segunda parte, utilizará Scapy para rastrear el tráfico de red
+. En las partes tres y cuatro,
+
+00:40.400 --> 00:45.590
+creará y capturará paquetes de envío ICMP
+y TCP personalizados.
+
+00:47.380 --> 00:52.810
+La primera parte investiga la herramienta scapy.  Como con
+la mayoría de las herramientas que utiliza en este curso,
+
+00:52.819 --> 00:57.310
+scapy solo debe usarse en redes que posee
+o tiene permiso por escrito para acceder,
+
+00:57.470 --> 01:03.770
+completar esta práctica de laboratorio en su VM o en Kali es seguro.
+El primer paso es revisar la documentación de scapy.
+
+01:04.489 --> 01:09.739
+Siga el enlace del laboratorio y lea la introducción
+del creador de Scapy, Philip Biondi.
+
+01:10.500 --> 01:14.449
+El segundo paso es iniciar scapy y usar el modo de comando interactivo
+.
+
+01:15.059 --> 01:17.110
+Ya tengo mi VM Kali abierta.
+
+01:17.720 --> 01:22.019
+Abramos una terminal.  Scapy requiere privilegios de raíz
+.
+
+01:22.230 --> 01:26.080
+Ingresemos sudo su.
+Tenemos acceso persistente a la raíz.
+
+01:26.199 --> 01:30.809
+A continuación, introduzca el comando scapy para iniciar el intérprete de Python
+y cargar scapy.
+
+01:31.569 --> 01:36.709
+Ingrese la función ls para mostrar una lista de todos los
+formatos y protocolos predeterminados disponibles
+
+01:36.720 --> 01:40.410
+proporcionados por scapy.
+Estos son los formatos predeterminados para TFTP.
+
+01:40.910 --> 01:44.220
+El paso tres es revisar el encabezado del paquete
+ de IPv4.
+
+01:44.830 --> 01:47.540
+Esto debe ser principalmente un repaso de sus
+cursos anteriores.
+
+01:48.309 --> 01:50.239
+Puede revisar esto en su propio tiempo.
+
+01:50.720 --> 01:56.209
+No lo revisaremos aquí, excepto para ver que puede hacer que
+scapy enumere los campos del encabezado IP
+
+01:56.250 --> 02:00.500
+ingresando la función ls y proporcionando IP como
+el argumento.
+
+02:04.339 --> 02:08.770
+La segunda parte es usar Scapy para rastrear el tráfico de la red
+. El primer paso 
+
+02:08.779 --> 02:14.070
+es usar la función sniff para iniciar la
+captura de la interfaz cero de Ethernet predeterminada. 
+
+02:14.309 --> 02:19.100
+Abra un segundo terminal y envíe cinco paquetes ping
+a cisco.com.
+
+02:19.470 --> 02:24.880
+Regrese a la ventana donde se está ejecutando scapy y
+detenga la captura con control-c. Obtienes un
+
+02:24.889 --> 02:30.039
+resumen de los tipos de paquetes capturados.
+Asigna la salida de la función sniff a 
+
+02:30.050 --> 02:34.110
+una variable. 
+Estamos usando la letra A. Tenga en cuenta que el
+
+02:34.119 --> 02:38.800
+el guion bajo se usa para mantener temporalmente la salida
+de la última función ejecutada,
+
+02:38.949 --> 02:40.419
+que era la función de rastreo.
+
+02:41.619 --> 02:47.210
+Ahora use la función de resumen para ver el resultado 
+capturado. El segundo paso es capturar y guardar
+
+02:47.220 --> 02:49.220
+tráfico desde una interfaz específica.
+
+02:49.580 --> 02:54.320
+Observe esta topología que representa
+todos los dispositivos dentro de su VM de Kali.
+
+02:54.970 --> 03:01.350
+Ahora capturarás el tráfico entre la
+interfaz  106.6.6.1 y el servidor Gravemind en 
+
+03:01.360 --> 03:08.220
+10.6.6.23 abre una nueva terminal e ingresa el
+comando ifconfig para enumerar 
+
+03:08.229 --> 03:11.270
+todas las interfaces disponibles en el enrutador virtual,
+
+03:11.509 --> 03:17.589
+ubica el nombre de la interfaz conectada a
+106.6.0.1 que es interna de BR. 
+
+03:18.029 --> 03:23.520
+Esta vez, cuando use la función sniff, 
+especifique br-internal como la interfaz que desea
+
+03:23.529 --> 03:28.449
+que scapy monitoree.  El servidor Gravemind se está ejecutando
+actualmente en su VM Kali.
+
+03:28.940 --> 03:34.869
+Abra Firefox e ingrese la dirección IP de Gravemind
+10.6.6.23.
+
+03:36.289 --> 03:39.460
+Minimice Firefox y vuelva a la instancia de scapy.
+
+03:39.789 --> 03:42.860
+Use control-c para detener la ejecución de la función
+sniff.
+
+03:43.880 --> 03:47.520
+Asigne la salida a A y vea este resumen como
+lo hizo anteriormente.
+
+03:48.089 --> 03:50.610
+El tercer paso es repetir la función de rastreo.
+
+03:50.970 --> 03:55.089
+Pero esta vez filtrándolo solo para los primeros 10
+paquetes ICMP.
+
+03:55.559 --> 03:58.619
+Hacemos esto agregando más argumentos a la función
+ rastreo.
+
+03:59.020 --> 04:05.619
+Asigne ICMP al argumento del filtro y de 10 
+al argumento de conteo y, a continuación, presione Intro.
+
+04:06.789 --> 04:11.440
+Abra un segundo terminal y envíe 10 paquetes ICMP
+al servidor Gravemind.
+
+04:12.800 --> 04:17.309
+Vuelve a scapy.
+La captura ya se detiene después de 10 paquetes.
+
+04:17.500 --> 04:22.119
+Esta vez, use la función nsummary para agregar
+números de línea a su salida.
+
+04:23.690 --> 04:27.339
+Puede utilizar los números de línea para ver los detalles
+de un paquete específico.
+
+04:27.790 --> 04:33.309
+Ingrese A con dos entre corchetes, revise el detalle
+de las unidades de datos del protocolo que conforman este
+
+04:33.320 --> 04:37.220
+paquete.
+Por ejemplo, ¿puede localizar la dirección IP y 
+
+04:37.230 --> 04:42.100
+la dirección MAC?
+Use la función wrpcap para guardar los datos 
+
+04:42.109 --> 04:46.329
+capturados en un archivo pcap. 
+Tenga en cuenta que especifica A porque esta es la 
+
+04:46.339 --> 04:49.730
+variable donde almacena los datos que desea
+guardar en el archivo.
+
+04:49.929 --> 04:52.010
+El archivo se guarda en su directorio de inicio.
+
+04:52.329 --> 04:55.190
+Abra el archivo en Wireshark para ver su contenido
+.
+
+05:07.950 --> 05:11.450
+La tercera parte es crear y enviar un paquete ICMP
+personalizado.
+
+05:12.149 --> 05:16.540
+Creará un paquete ICMP con un mensaje
+dentro de la carga útil de datos.
+
+05:17.470 --> 05:24.290
+El primer paso es usar scapy para crear y enviar 
+el mensaje. Primero habilite el rastreo para 
+
+05:24.299 --> 05:29.600
+la interfaz br-internal.  Dado que su instancia
+actual de scapy está en modo de supervisión,
+
+05:29.760 --> 05:36.070
+abra otro terminal e inicie una nueva instancia 
+de scap. Con la función de envío,
+
+05:36.079 --> 05:42.320
+especifique argumentos para su paquete ICMP. Utilice la 
+dirección IP de Gravemind 10.6.6.23.
+
+05:42.329 --> 05:49.130
+Especifique ICMP como protocolo encapsulado y, 
+luego, especifique que se trata de una prueba
+
+05:49.140 --> 05:54.690
+como mensaje. Presione Intro para enviar el paquete,
+regrese a su primera instancia de scapy y 
+
+05:54.700 --> 05:58.609
+detenga el monitoreo. 
+Asigne la salida a A y use nsummary
+
+05:58.619 --> 06:03.279
+para ver la salida. 
+Observe que capturó una solicitud de eco ICMP
+
+06:03.290 --> 06:04.329
+y una respuesta de eco. 
+
+06:04.970 --> 06:08.510
+También puede capturar paquetes ARP si la caché ARP
+está vacía.
+
+06:09.019 --> 06:12.519
+El segundo paso es ver el paquete de solicitud de eco de ICMP
+.
+
+06:13.209 --> 06:14.920
+Este es su paquete creado.
+
+06:15.570 --> 06:22.299
+Observe que el campo de datos tiene su mensaje.
+Esto es una prueba. La cuarta parte es crear y enviar
+
+06:22.309 --> 06:24.230
+un paquete de envío TCP personalizado.
+
+06:24.959 --> 06:29.329
+Creará el paquete para ver si un recurso compartido de unidad de
+Microsoft Windows está abierto en el puerto 445 
+
+06:29.339 --> 06:35.589
+445. El primer paso es iniciar una captura de rastreo y
+, luego, enviar un paquete TCP personalizado 
+
+06:35.600 --> 06:39.429
+al servidor Gravemind. 
+Primero inicie la captura como lo hizo anteriormente
+
+06:39.440 --> 06:43.190
+asegurándose de especificar la interfaz conectada
+a la red interna.
+
+06:44.279 --> 06:50.850
+Luego use la función de envío en otro terminal
+especificando la dirección IP de destino. Esta vez
+
+06:50.859 --> 06:57.309
+especifique TCP como el protocolo, establezca 445 como 
+el puerto de destino y configure el 
+
+06:57.320 --> 06:59.929
+indicador de envío.  Presione Intro para enviar el paquete.
+
+07:00.369 --> 07:03.149
+El segundo paso es examinar los paquetes capturados.
+
+07:03.480 --> 07:04.760
+Detenga el monitoreo. 
+
+07:05.010 --> 07:11.220
+Utilice la función nsummary para ver los detalles
+del paquete TCP devuelto por el destino. Nota
+
+07:11.230 --> 07:16.209
+Se devuelve el mensaje SYN / ACK, lo que significa que el puerto 
+445 está abierto.
+
+07:16.829 --> 07:21.160
+Piense en lo que aprendió en esta práctica de laboratorio
+y considere cómo los agentes de amenazas pueden utilizar
+
+07:21.170 --> 07:22.980
+paquetes para realizar el reconocimiento.
+
+07:23.790 --> 07:28.049
+Además, ¿cómo podrían usar paquetes diseñados
+para lanzar ataques de denegación de servicio?
+
+07:28.470 --> 07:33.369
+Lea la documentación de scapy para descubrir cómo
+se podría usar en una variedad de escenarios
+
+07:33.380 --> 07:38.250
+de pruebas y diviértase creando paquetes
+de manera segura dentro de su BM.
+
