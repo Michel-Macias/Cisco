@@ -20,7 +20,8 @@ apt install -y \
     john \
     wordlists \
     python3 \
-    python3-pip
+    python3-pip \
+    emailharvester
 
 # Descomprimir rockyou sin bajar todo seclists
 if [ ! -f /usr/share/wordlists/rockyou.txt ]; then

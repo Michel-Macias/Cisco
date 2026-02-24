@@ -5,11 +5,12 @@ Este directorio, `contenedores_pruebas`, sirve como un repositorio completo para
 ## 🎯 Estructura del Proyecto
 
 ```
-contenedores_pruebas/
-├── docker-compose.yml          # Configuración de entorno de laboratorio
-├── Labs/                       # Documentación de laboratorios
+contenedores_pruebas/ (Ubicado en Cisco/contenedores_pruebas)
+├── docker-compose.yml          # Entorno centralizado de ataques y víctimas
+├── Labs/                       # Documentación de laboratorios e investigaciones
 │   ├── Laboratorio-Pentesting-01.md
 │   ├── Laboratorio-DVWA.md
+│   ├── Lab_Organization_Info.md (Nuevo)
 │   ├── Reporte-Ejecutivo-Pentest-Lab01.md
 │   ├── Reporte-Ejecutivo-Pentest-DVWA.md
 │   ├── Escaneo-Nmap-Red-Completa.md
