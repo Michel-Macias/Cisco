@@ -49,3 +49,10 @@ Los principios básicos que exige Cisco (y certificadoras como EC-Council u Offe
 
 ---
 **Nota del Mentor:** M1txel, fíjate en cómo este Módulo 2 ya no habla de "cómo hacer un nmap", sino de cómo protegerte legalmente y entender el negocio. Si alguna vez firmas un contrato de pentest, el documento de alcance (SOW - *Statement of Work*) y las Reglas de Enfrentamiento (RoE) son tus escudos.
+
+### 📄 Documentos de Ejemplo (Escenario Ficticio)
+
+Para que tengas claro cómo lucen estos documentos en la industria real, aquí tienes dos ejemplos profesionales completos basados en un escenario ficticio:
+
+- 📋 [**Ejemplo de SOW (Statement of Work)**](./Ejemplo_SOW_Statement_of_Work.md) — Cubre alcance, entregables, cronograma, condiciones económicas, restricciones y firmas.
+- ⚔️ [**Ejemplo de RoE (Rules of Engagement)**](./Ejemplo_RoE_Rules_of_Engagement.md) — Cubre ventana de pruebas, técnicas permitidas/prohibidas, cadena de comunicación, protocolo de hallazgos críticos y manejo de datos sensibles.
