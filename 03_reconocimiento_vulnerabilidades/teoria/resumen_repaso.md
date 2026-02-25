@@ -119,4 +119,16 @@ Para priorizar las acciones, utilizamos estándares internacionales:
 *   **US-CERT / JPCERT:** Equipos de respuesta ante emergencias que publican alertas críticas.
 
 ---
+
+## 🧠 Reflexión del Módulo
+*Preguntas para consolidar el conocimiento tras finalizar el Tema 3:*
+
+1. **¿Qué tipo de información valiosa se puede encontrar en el reconocimiento pasivo?**
+   > *Respuesta*: Registros DNS (configuración de red), metadatos en archivos (software y nombres de usuario), huella digital en redes sociales y servicios expuestos en bases de datos como Shodan.
+2. **¿Por qué un evaluador debe tener cuidado al realizar un reconocimiento activo?**
+   > *Respuesta*: Porque es intrusivo y puede activar alarmas (IPS/IDS), saturar el ancho de banda o, en el peor de los casos, causar una denegación de servicio (DoS) en sistemas críticos o frágiles.
+3. **¿Por qué es importante verificar manualmente algunos resultados de los escáneres?**
+   > *Respuesta*: Debido a los falsos positivos. Un escáner puede identificar una vulnerabilidad basándose solo en un número de versión, sin saber si existe un parche de "backporting" o si la configuración necesaria para explotarla está desactivada.
+
+---
 > **Tip de Mentor:** "Un escáner te da datos, un analista te da seguridad." Valida siempre tus hallazgos antes de reportarlos.

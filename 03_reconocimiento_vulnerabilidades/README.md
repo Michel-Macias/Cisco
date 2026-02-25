@@ -29,8 +29,9 @@ El objetivo de este módulo es dominar las técnicas de "footprinting" y la iden
 ├── 📁 teoria/             # 📚 Manual de Combate y FAQ
 ├── 📁 practica/           # 🛠️ Escenarios de Reconocimiento
 │   ├── 📁 01_pasivo/      # 🔭 Google Dorking, DNS, OSINT
-│   └── 📁 02_activo/      # 💥 Scapy, Nmap, Wireshark
-├── 📁 recursos/           # 📄 Material de apoyo y diagramas
+│   ├── 📁 02_activo/      # 💥 Scapy, Nmap, Wireshark
+│   └── 📁 03_analisis/    # 🛡️ CVE, CVSS, Metodología de Escaneo
+├── 📁 recursos/           # 📄 Material de apoyo, PDF y Multimedia
 ├── 📁 infraestructura/    # 🐳 Escenarios Docker específicos
 └── 📄 README.md           # 🏠 Este archivo
 ```
@@ -67,6 +68,17 @@ Estrategias avanzadas para identificar puntos débiles:
 8.  👉 **[LAB 3.2.1: Análisis con Scapy](./practica/02_reconocimiento_activo/labs/lab_3.2.1_scapy.md)**
 9.  👉 **[LAB 3.2.2: Escaneo Avanzado con Nmap](./practica/02_reconocimiento_activo/labs/lab_3.2.2_nmap.md)**
 10. 👉 **[LAB 3.2.3: Wireshark y Análisis de Tráfico](./practica/02_reconocimiento_activo/labs/lab_3.2.3_wireshark.md)**
+
+### 🛡️ 03. Análisis de Vulnerabilidades
+11. 👉 **[LAB 3.3.1: Metodología y Lógica del Escaneo](./practica/03_analisis_vulnerabilidades/labs/lab_3.3.1_vuln_scanning_logic.md)**
+12. 👉 **[LAB 3.4.1: Investigación de Fuentes de Vulnerabilidades](./practica/03_analisis_vulnerabilidades/labs/lab_3.4.1_investigacion_fuentes.md)**
+
+---
+
+## 📚 Material Complementario
+Además de los labs, se han incluido recursos de profundización en la carpeta `recursos/`:
+*   📄 **[Análisis Táctico de Vulnerabilidades](./recursos/Análisis_Táctico_de_Vulnerabilidades.pdf)**: Guía avanzada sobre metodología de escaneo.
+*   🎙️ **[Audio: Falsos Positivos y Automatización](./recursos/Falsos_positivos_y_la_ilusión_de_la_automatización.m4a)**: Reflexión sobre los límites de las herramientas automáticas.
 
 
 ---
