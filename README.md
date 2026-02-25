@@ -13,24 +13,36 @@ Este repositorio centraliza el conocimiento, laboratorios, metodologías y herra
 
 ---
 
-## 📚 Módulos del Proyecto
+## 📚 Estructura del Proyecto
+
+El repositorio ha sido reorganizado siguiendo un estándar de **Seguridad y Metodología Profesional** para asegurar la coherencia en la formación.
+
+### Módulos de Aprendizaje
 
 | Módulo | Directorio | Contenidos Clave | Estado |
 | :--- | :--- | :--- | :--- |
-| **01** | [🛡️ Marcos de Pentesting](./Modulo_1_Marcos_Pentest/) | OSSTMM, NIST, PTES, Ética y Legalidad. | ✅ Finalizado |
-| **02** | [📋 Planificación y Alcance](./Modulo_2_Planificacion&Alcance/) | SOW, RoE, NDA y Definición de Objetivos. | ✅ Finalizado |
-| **03** | [🔍 Reconocimiento y Vulnerabilidades](./Modulo_3_Reconocimiento_Y_Vulnerabilidades/) | OSINT, Reconocimiento Activo (Nmap, Scapy), Sniffing y CVSS. | ✅ Finalizado |
-| **04** | [🌐 Infraestructura de Seguridad de Red](./Modulo_4_Infraestructura_Seguridad_Red/) | Firewalling, IDS/IPS, Securización de Redes. | 🛠️ En Repaso |
-| **05** | *Próximamente* | Control de Acceso y Gestión de Identidad. | ⏳ Pendiente |
-| **06** | [💥 Explotación de Aplicaciones](./Modulo_6_Explotacion_Vulnerabilidades_App/) | Inyección, Desbordamiento, SQLi y Entornos Docker. | 🛠️ En Repaso |
+| **01** | [🛡️ Marcos de Pentesting](./01_marcos_pentest/) | OSSTMM, NIST, PTES, Ética y Legalidad. | ✅ Finalizado |
+| **02** | [📋 Planificación y Alcance](./02_planificacion_alcance/) | SOW, RoE, NDA, Gestión de Proyectos. | ✅ Finalizado |
+| **03** | [🔍 Reconocimiento](./03_reconocimiento_vulnerabilidades/) | OSINT, Escaneo Activo, Análisis de Vuln. | ✅ Finalizado |
+| **04** | [🌐 Seg. en Infraestructura](./04_infraestructura_seguridad/) | Firewalling, IDS/IPS, Hardening de Red. | 🛠️ En Repaso |
+| **06** | [💥 Explotación Web/Apps](./06_explotacion_web_app/) | Inyección, OWASP Top 10, Labs Integrados. | 🛠️ En Repaso |
+| **99** | [🐳 Entorno Docker](./99_entorno_docker/) | Laboratorio de pruebas de penetración unificado. | 🚀 Activo |
+
+### Organización Interna de los Módulos
+Cada directorio de módulo mantiene una estructura estandarizada:
+*   📁 `teoria/`: Resúmenes teóricos y FAQs conceptuales.
+*   📁 `practica/`: Guías de laboratorio y guiones de ejecución.
+*   📁 `recursos/`: Material de apoyo, imágenes y documentos de muestra.
+*   📁 `infraestructura/`: Scripts y configuraciones Docker específicas.
 
 ---
 
-## 🛠️ Dinámica de Trabajo
-Nuestra metodología se basa en tres pilares:
-1.  **Dramatización Realista:** No solo resolvemos laboratorios de Cisco; simulamos situaciones de consultoría real (SOW, RoE reales).
-2.  **Documentación Premium:** Cada módulo incluye un `FAQ_CONCEPTOS.md` para asentar conocimientos y un `README.md` guía.
-3.  **Laboratorios en Docker:** Automatización de entornos de prueba para ataques controlados y defensa.
+## 🛠️ Metodología de Trabajo
+Nuestra dinámica se basa en tres pilares:
+1.  **Enfoque de Consultoría:** Simulamos situaciones reales mediante la creación de documentos profesionales (SOW, RoE, Informes Ejecutivos).
+2.  **Aprendizaje Didáctico:** Los conceptos complejos se asientan en archivos `faq_conceptos.md` y repasos estructurados.
+3.  **Entornos Inmersivos:** Uso intensivo de contenedores para replicar escenarios de ataque y defensa sin comprometer el sistema host.
 
 ---
 *Este repositorio es un activo de conocimiento vivo. Evoluciona con cada módulo completado y cada laboratorio superado.*
+
