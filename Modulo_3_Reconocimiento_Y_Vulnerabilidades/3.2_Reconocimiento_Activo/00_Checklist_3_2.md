@@ -15,7 +15,7 @@ Este documento sirve para trackear el progreso de revisión de los laboratorios 
 ## 🛠️ Tareas Pendientes (To-Do)
 - [x] Crear el checklist y la carpeta de laboratorios (`labs/`).
 - [x] Extraer las prácticas de Reconocimiento Activo a Markdown (Scapy, Nmap, Wireshark).
-- [ ] Procesar el documento teórico y ubicarlo en la raíz como `01_Reconocimiento_Activo.md`.
+- [x] Procesar el documento teórico y ubicarlo en la raíz como `01_Reconocimiento_Activo.md`.
 
 ---
 

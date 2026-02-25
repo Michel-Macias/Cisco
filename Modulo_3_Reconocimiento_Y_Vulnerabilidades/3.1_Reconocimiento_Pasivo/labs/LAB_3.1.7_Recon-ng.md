@@ -130,10 +130,24 @@ SUMMARY
 
 ---
 
-## Resumen de Flujo de Trabajo (Cheat Sheet)
-1. **`workspaces create <nombre>`**: Crear un entorno limpio.
-2. **`marketplace install <ruta>`**: Descargar la herramienta necesaria.
-3. **`modules load <ruta>`**: Seleccionar la herramienta.
-4. **`options set SOURCE <target>`**: Definir el objetivo.
-5. **`run`**: Ejecutar la acción.
-6. **`show hosts`**: Ver los resultados consolidados.
+---
+
+## 🧠 Reflexión del Mentor
+**¿Por qué usar Recon-ng en lugar de simples comandos de consola?**
+> *Respuesta*: Por la **gestión de datos**. Recon-ng no es solo un recolector; es un gestor de base de datos. Cada host que encuentra Bing, cada IP que resuelve Google, y cada contacto que extrae LinkedIn se guarda en tablas relacionales. Esto te permite, al final del día, generar un informe completo consolidando fuentes dispares en un único lugar sin tener que copiar y pegar manualmente.
+
+---
+
+## 📑 Resumen de Flujo de Trabajo (Cheat Sheet)
+
+| Comando | Función |
+| :--- | :--- |
+| `workspaces create <nombre>` | Crear un entorno aislado para un cliente/proyecto. |
+| `marketplace install <modulo>` | Descargar el módulo desde el repositorio oficial. |
+| `modules load <modulo>` | Cargar el módulo seleccionado para su uso. |
+| `options set SOURCE <objetivo>` | Definir el dominio o IP sobre el cual actuar. |
+| `run` | Iniciar la ejecución del módulo. |
+| `show hosts` | Visualizar todos los subdominios descubiertos en el workspace. |
+
+---
+*Este laboratorio es una adaptación educativa del currículo oficial de Cisco para el curso de Ethical Hacker.*

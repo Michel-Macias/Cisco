@@ -26,13 +26,16 @@ El objetivo de este módulo es dominar las técnicas de "footprinting" y la iden
 
 ```bash
 .
-├── 📁 assets/             # 🧠 Mapas mentales y diagramas
-├── 📁 docker/             # 🐳 Entornos de red controlados (DNS, etc.)
-├── 📁 labs/               # 🛠️ Guías de laboratorios paso a paso
-├── 📁 resources/          # 📄 Material original (PDFs de Cisco)
-├── 📄 Resumen_Repaso_Tema3.md    # 📚 Manual de Combate Teórico
-├── 📄 FAQ_CONCEPTOS.md           # ❓ Dudas técnicas y "Cheat Sheets"
-└── 📄 README.md                  # 🏠 Este archivo
+├── 📁 3.1_Reconocimiento_Pasivo/  # 🔭 Técnicas de recolección pasiva
+│   └── 📁 labs/                  # 🛠️ Prácticas (DNS, OSINT, Metadatos)
+├── 📁 3.2_Reconocimiento_Activo/  # 💥 Interacción directa (Nmap, Scapy)
+│   └── 📁 labs/                  # 🛠️ Prácticas (Captura, Escaneo, Forjado)
+├── 📁 assets/                     # 🧠 Mapas mentales y diagramas
+├── 📁 docker/                     # 🐳 Entornos de red controlados
+├── 📁 resources/                  # 📄 Material original (Cisco)
+├── 📄 Resumen_Repaso_Tema3.md      # 📚 Manual de Combate Teórico
+├── 📄 FAQ_CONCEPTOS_Mod3.md       # ❓ Dudas técnicas y "Cheat Sheets"
+└── 📄 README.md                    # 🏠 Este archivo
 ```
 
 ---
@@ -41,24 +44,33 @@ El objetivo de este módulo es dominar las técnicas de "footprinting" y la iden
 
 ### 🔭 Reconocimiento Pasivo
 Dominio de herramientas de consulta pública sin interacción directa con el objetivo:
-*   **DNS Recon:** `nslookup`, `dig`, `host`.
-*   **Domain Intelligence:** Uso avanzado de `whois` y registros de red.
-*   **OSINT:** Identificación de activos y superficies de ataque.
+*   **DNS Recon:** `nslookup`, `dig`, `whois`.
+*   **OSINT Automatizado:** `SpiderFoot`, `Recon-ng`.
+*   **Huella Digital:** Análisis de metadatos y Redes Sociales.
 
-### 🛡️ Análisis de Vulnerabilidades
+### 🛡️ Análisis de Vulnerabilidades (Próximamente)
 Estrategias avanzadas para identificar puntos débiles:
-*   **Desafíos Técnicos:** Gestión de falsos positivos y sistemas frágiles (IoT, impresoras).
-*   **Políticas de Escaneo:** Cuándo esmerarse en producción y cuándo usar fuerza bruta.
+*   **Gestión de Vulnerabilidades:** Uso de escáneres profesionales (Nessus/OpenVAS).
 *   **Estándares:** Comprensión profunda de **CVSS**, **CVE** y **CWE**.
 
 ---
 
-## 🛠️ Laboratorios Disponibles
+## 🧪 Laboratorios Disponibles
 El aprendizaje se consolida en la CLI. Consulta nuestras guías interactivas:
 
-1.  👉 **[LAB 01: Búsquedas DNS y Reconocimiento](./labs/LAB_01_DNS_Recon.md)**
-    *   Técnicas de `nslookup` vs `dig`.
-    *   Búsquedas inversas (rDNS) y análisis de registros TXT/MX.
+### 🔬 3.1 Reconocimiento Pasivo
+1.  👉 **[LAB 3.1.1: Google Dorking](./3.1_Reconocimiento_Pasivo/labs/LAB_3.1.1_Google_Dorking.md)**
+2.  👉 **[LAB 3.1.2: DNS y Whois Recon](./3.1_Reconocimiento_Pasivo/labs/LAB_3.1.2_DNS_Recon.md)**
+3.  👉 **[LAB 3.1.3: OSINT Tools (SpiderFoot)](./3.1_Reconocimiento_Pasivo/labs/LAB_3.1.3_OSINT_Tools.md)**
+4.  👉 **[LAB 3.1.4: Social Media Intelligence](./3.1_Reconocimiento_Pasivo/labs/LAB_3.1.4_Social_Media_Intelligence.md)**
+5.  👉 **[LAB 3.1.5: Certificados SSL](./3.1_Reconocimiento_Pasivo/labs/LAB_3.1.5_SSL_Certificates.md)**
+6.  👉 **[LAB 3.1.6: OSINT de Organización](./3.1_Reconocimiento_Pasivo/labs/LAB_3.1.6_Organization_Info.md)**
+7.  👉 **[LAB 3.1.7: Recon-ng Framework](./3.1_Reconocimiento_Pasivo/labs/LAB_3.1.7_Recon-ng.md)**
+
+### 💥 3.2 Reconocimiento Activo
+8.  👉 **[LAB 3.2.1: Análisis con Scapy](./3.2_Reconocimiento_Activo/labs/LAB_3.2.1_Scapy.md)**
+9.  👉 **[LAB 3.2.2: Escaneo Avanzado con Nmap](./3.2_Reconocimiento_Activo/labs/LAB_3.2.2_Nmap.md)**
+10. 👉 **[LAB 3.2.3: Wireshark y Análisis de Tráfico](./3.2_Reconocimiento_Activo/labs/LAB_3.2.3_Wireshark.md)**
 
 ---
 

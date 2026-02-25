@@ -1,123 +1,91 @@
-# Guía y Laboratorios: Reconocimiento Activo
+# 🧪 Laboratorio 3.2.0: Guía Maestra de Reconocimiento Activo
 
-## Introducción
-El reconocimiento activo implica la interacción directa con la superficie de ataque de un objetivo. Esto deja rastros (registros en logs, alertas) en los sistemas del objetivo, a diferencia del reconocimiento pasivo. En esta fase, los evaluadores de penetración envían paquetes a los hosts y analizan las respuestas para mapear las redes, descubrir hosts en vivo, identificar puertos abiertos, enumerar servicios y detectar posibles vulnerabilidades.
+## 🎯 Objetivos de Aprendizaje
+- Interactuar directamente con sistemas objetivo para mapear superficies de ataque.
+- Utilizar herramientas de escaneo masivo y precisión (Masscan, Nmap).
+- Implementar técnicas de evasión de Firewalls e IDS/IPS.
+- Realizar enumeración profunda de servicios críticos (SMB, HTTP).
 
-## Parte 1: Escaneo de Puertos y Descubrimiento de Hosts
-El escaneo de puertos permite determinar el estado de varios puertos (Abierto, Cerrado o Filtrado). 
+---
 
-### Paso 1: Escaneo Básico y Activo con Nmap
-Nmap es la herramienta estándar de la industria para el descubrimiento de hosts y escaneo de puertos.
-**Comandos útiles (Nmap):**
+## 👨‍💻 Escenario
+A diferencia del reconocimiento pasivo, el **reconocimiento activo** implica "tocar" el objetivo. Cada paquete enviado puede ser registrado por un SOC (Security Operations Center). Como auditores, nuestra meta es ser tan precisos y eficientes como sea posible, extrayendo el máximo de información con el mínimo de ruido necesario, o bien, simulando ataques ruidosos para probar las capacidades de detección del cliente.
+
+---
+
+## 🚀 Parte 1: Descubrimiento Masivo y de Precisión
+
+### 1.1 Escaneo de Alta Velocidad (Masscan)
+Masscan es ideal para perímetros extensos. Puede escanear el Internet completo en minutos si se tiene el ancho de banda necesario.
 ```bash
-# Escaneo básico de todos los puertos TCP:
-nmap -p- <target_ip>
-
-# Escaneo agresivo (identificación de OS, versiones, scripts por defecto y traceroute):
-nmap -A -T4 <target_ip>
-
-# Descubrimiento de hosts en una subred sin escanear puertos (Ping Sweep):
-nmap -sn 192.168.1.0/24
+# Escanear puertos web en una subred /24 a una tasa de 10k paquetes/seg
+sudo masscan -p80,443 192.168.1.0/24 --rate=10000
 ```
 
-### Paso 2: Escaneo Ultrarrápido con Masscan
-Masscan es capaz de escanear volúmenes enormes de red transmitiendo millones de paquetes por segundo.
-**Comandos útiles (Masscan):**
+### 1.2 Escaneo Detallado (Nmap)
+Una vez identificados los hosts "vivos", pasamos a Nmap para un análisis quirúrgico.
 ```bash
-# Escanear una subred completa en puertos web específicos de forma sumamente rápida:
-masscan -p80,8000-8100 10.0.0.0/8 --rate=10000
-
-# Escanear todos los puertos TCP y UDP en un objetivo específico:
-masscan -p1-65535,U:1-65535 <target_ip> --rate=1000
+# Escaneo de todos los puertos con detección de servicios y SO
+nmap -p- -sV -O -v <target_ip>
 ```
 
-## Parte 2: Evasión de Filtros y Firewalls en el Escaneo
-Al escanear desde el exterior, los firewalls y los sistemas IDS/IPS inspeccionarán el tráfico de escaneo. Se pueden utilizar técnicas para alterar la firma de los paquetes para saltarse o inferir las reglas del firewall.
+---
 
-### Paso 1: Técnicas de evasión con Nmap
-Se emplean opciones especiales para engañar a los equipos de defensa o evitar bloqueos de IDS automatizados.
-**Comandos útiles:**
+## 🛡️ Parte 2: Evasión de Defensas (Firewall & IDS)
+
+Los sistemas de defensa modernos bloquean escaneos obvios. Debemos "moldear" nuestro tráfico.
+
+### Técnicas de Sigilo:
+- **Fragmentación (`-f`):** Divide las cabeceras TCP para que los IDS no puedan compararlas con firmas conocidas.
+- **Señuelos (`-D`):** Envía escaneos desde múltiples IPs falsas junto con la tuya para camuflar el origen real.
+- **Timing (`-T<0-5>`):** Use `-T2` (Polite) o `-T1` (Sneaky) para evitar disparar alertas por umbral de velocidad.
+
 ```bash
-# Escaneo de puerto TCP ACK (usado a menudo para inferir reglas de firewall):
-nmap -sA <target_ip>
-
-# Fragmentación de paquetes (divide la cabecera del paquete en pequeños fragmentos para evadir IDS):
-nmap -f <target_ip>
-# Modificación personalizada del tamaño máximo de la unidad de transmisión (MTU):
-nmap --mtu 24 <target_ip>
-
-# Spoofing (falsificación) de dirección IP de origen y dirección MAC física:
-nmap -S <ip_falsa> -e eth0 -Pn <target_ip>
-nmap --spoof-mac 00:11:22:33:44:55 <target_ip>
+# Escaneo fragmentado con señuelos y timing sigiloso
+sudo nmap -f -D RND:10 -T2 <target_ip>
 ```
 
-## Parte 3: Enumeración de Sistemas y Servicios
-Una vez identificados puertos abiertos, el siguiente paso es la enumeración: extraer versiones concretas, nombres de usuario, recursos compartidos o banners del sistema operativo.
+---
 
-### Paso 1: Enumeración de SMB (Samba/Windows)
-Si encontramos los puertos 445/139 abiertos, utilizamos herramientas de enumeración especializadas en el protocolo de la red de Windows.
-**Comandos útiles:**
+## 🔍 Parte 3: Enumeración de Servicios Críticos
+
+Identificar un puerto abierto es solo el principio. Debemos saber *qué* hay dentro.
+
+### 3.1 Protocolo SMB (Puertos 139, 445)
+Es el vector favorito para movimientos laterales y escalada de privilegios.
 ```bash
-# Enumeración exhaustiva de recursos y cuentas locales con enum4linux:
-enum4linux -a <target_ip>
-# Su alternativa moderna basada en Python:
-enum4linux-ng.py -As <target_ip>
+# Enumeración completa con enum4linux-ng
+enum4linux-ng -A <target_ip>
 
-# Interacción y visualización de recursos compartidos directamente con cliente SMB:
+# Listar recursos compartidos de forma anónima
 smbclient -L \\\\<target_ip> -N
 ```
 
-### Paso 2: Enumeración de Aplicaciones Web
-Cuando descubrimos aplicaciones web expuestas en puertos HTTP/HTTPS, consultamos carpetas por defecto y vulnerabilidades web básicas.
-**Comandos útiles:**
+### 3.2 Servidores Web (Puertos 80, 443)
 ```bash
-# Forzar búsqueda de directorios comunes mediante el script especializado de Nmap:
-nmap -sV --script=http-enum -p 80,443 <target_ip>
-
-# Análisis rápido de vulnerabilidades en el servidor web usando Nikto (genera ruido evidente):
-nikto -h <target_ip>
+# Escaneo de vulnerabilidades y configuraciones por defecto
+nikto -h http://<target_ip>
 ```
 
-## Parte 4: Exploración Interactiva y Elaboración de Paquetes
-Con el propósito de determinar cómo responden los sistemas anfitriones a paquetes corruptos o poco comunes, se procede a su forjado manual.
+---
 
-### Paso 1: Creación de Paquetes Personalizados con Scapy
-Scapy es un potente framework de generación, manipulación y análisis de paquetes de red. Debe ser ejecutado con permisos elevados para inyectar paquetes.
-**Interacción y comandos útiles desde consola:**
+## 🏗️ Parte 4: Ingeniería de Paquetes con Scapy
+
+Cuando las herramientas estándar fallan, forjamos nuestros propios paquetes.
 ```python
-# Lanzar Scapy en la terminal de forma interactiva:
+# Abrir entorno de forjado
 sudo scapy
 
-# Explorar los múltiples campos modificables de capas y protocolos (ej. TCP o DNS):
->>> ls(TCP)
->>> ls(DNS)
-
-# Forjar íntegramente de forma interactiva un paquete ICMP básico alterando el payload:
->>> send(IP(dst="192.168.88.251")/ICMP()/"malicious_payload")
-
-# Crear paquetes de tipo TCP SYN y enviarlos almacenando la respuesta en variables (Escaneo en crudo):
->>> ans, unans = sr(IP(dst='192.168.88.251')/TCP(dport=445,flags='S'))
+# Crear un paquete TCP SYN personalizado con un payload específico
+>>> pkt = IP(dst="10.6.6.23")/TCP(dport=80, flags="S")/"GET / HTTP/1.1\r\n\r\n"
+>>> send(pkt)
 ```
 
-## Parte 5: Rastreo e Inspección de Paquetes en Local
-Ocasionalmente, el reconocimiento implica situarse estratégicamente en una red de prueba o infiltrada para capturar ("sniffing") lo que viaja en texto plano en la red (ej: Telnet, HTTP, FTP).
+---
 
-### Paso 1: Captura de tráfico (Sniffing)
-Las herramientas por excelencia para esta recolección pacífica son tcpdump, tshark o la interfaz Wireshark.
-**Comandos útiles:**
-```bash
-# Capturar la interfaz entera de forma ininterrumpida guardando todo el tráfico en un .pcap con tcpdump:
-sudo tcpdump -i eth0 -s 0 -w packetdump.pcap
+## 🧠 Reflexión del Mentor
+**¿Cuál es el mayor riesgo del Reconocimiento Activo?**
+> *Respuesta*: El **bloqueo preventivo**. Un escaneo mal configurado puede hacer que tu IP de auditoría sea baneada automáticamente por el Firewall perimetral, impidiéndote continuar con las fases de explotación. Siempre comienza de lo más sigiloso a lo más ruidoso.
 
-# Utilizar tshark (versión basada en CLI de Wireshark) para filtrar y capturar apuntando a un host:
-sudo tshark host 192.168.78.142
-
-# Estudiar, diseccionar y analizar gráficamente el archivo .pcap:
-wireshark packetdump.pcap
-```
-
-## Notas de Progreso y Hallazgos
-- [x] Estudio y compresión fundamental de las opciones de reconocimiento dinámico y activo.
-- [ ] Ejecutar los comandos de escaneo en la topología designada como objetivo.
-- [ ] Investigar la integración de escaneo masivo con scripts en Python utilizando Nmap y Scapy.
-- [ ] Mantener constancia en evidencias tomadas con capturas de trafico .pcap frente a cada interacción en los exámenes de penetración.
+---
+*Este manual consolida las técnicas de interacción directa del Módulo 3 - Sección 3.2.*

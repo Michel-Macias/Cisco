@@ -59,9 +59,24 @@ El rDNS busca el nombre asociado a una IP mediante registros **PTR**.
 
 ---
 
+---
+
+## ⚡ Parte 5: La potencia de `dig` vs `nslookup` (Reflexión Técnica)
+
+¿Por qué preferimos `dig` sobre `nslookup` en una auditoría profesional?
+1.  **Precisión:** Muestra exactamente la respuesta del servidor sin interpretación excesiva.
+2.  **Detalle:** Incluye flags DNS (QR, RD, RA) cruciales para entender problemas de configuración.
+3.  **Scripting:** Su salida es mucho más fácil de procesar con herramientas como `grep`, `awk` o `sed`.
+
+---
+
 ## 🧠 Reflexión del Mentor
 **¿Qué herramienta usaría para comenzar un reconocimiento pasivo y por qué?**
 > *Respuesta*: Empezaría con `whois` para definir el "dueño" y los rangos de red permitidos. Luego usaría `dig` para profundizar en los registros DNS, ya que es más flexible y proporciona información sobre el tiempo de vida (TTL) de los registros y el estado de la consulta.
 
 ---
-*Documentación generada para el Módulo 3 - Sección 3.1*
+
+> **Reto Final:** Intenta encontrar los registros TXT de `google.com`. ¿Ves alguna validación de SPF para seguridad de correo?
+
+---
+*Documentación consolidada para el Módulo 3 - Sección 3.1*
