@@ -36,9 +36,9 @@ El objetivo de este módulo es dominar la documentación previa al compromiso. A
 ## 🧠 Contenidos Destacados
 
 ### 📝 Documentación Contractual
-*   **SOW (Statement of Work):** El "qué". Define los servicios, entregables y plazos.
-*   **RoE (Rules of Engagement):** El "cómo". Reglas tácticas, horarios de ataque y contactos de emergencia.
-*   **NDA (Non-Disclosure Agreement):** La garantía de confidencialidad de los datos hallados.
+*   **[SOW (Statement of Work)](./recursos/muestra_sow.md):** El "qué". Define los servicios, entregables y plazos.
+*   **[RoE (Rules of Engagement)](./recursos/muestra_roe.md):** El "cómo". Reglas tácticas, horarios de ataque y contactos de emergencia.
+*   **[NDA (Non-Disclosure Agreement)](./recursos/muestra_nda.md):** La garantía de confidencialidad de los datos hallados.
 
 ### 🎯 Definición de Alcance (Scoping)
 *   Identificación de activos críticos.
