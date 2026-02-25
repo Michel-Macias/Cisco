@@ -54,5 +54,5 @@ Los principios básicos que exige Cisco (y certificadoras como EC-Council u Offe
 
 Para que tengas claro cómo lucen estos documentos en la industria real, aquí tienes dos ejemplos profesionales completos basados en un escenario ficticio:
 
-- 📋 [**Ejemplo de SOW (Statement of Work)**](./Ejemplo_SOW_Statement_of_Work.md) — Cubre alcance, entregables, cronograma, condiciones económicas, restricciones y firmas.
-- ⚔️ [**Ejemplo de RoE (Rules of Engagement)**](./Ejemplo_RoE_Rules_of_Engagement.md) — Cubre ventana de pruebas, técnicas permitidas/prohibidas, cadena de comunicación, protocolo de hallazgos críticos y manejo de datos sensibles.
+- 📋 [**Ejemplo de SOW (Statement of Work)**](./resources/Ejemplo_SOW_Statement_of_Work.md) — Cubre alcance, entregables, cronograma, condiciones económicas, restricciones y firmas.
+- ⚔️ [**Ejemplo de RoE (Rules of Engagement)**](./resources/Ejemplo_RoE_Rules_of_Engagement.md) — Cubre ventana de pruebas, técnicas permitidas/prohibidas, cadena de comunicación, protocolo de hallazgos críticos y manejo de datos sensibles.

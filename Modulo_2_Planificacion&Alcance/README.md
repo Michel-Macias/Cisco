@@ -48,10 +48,11 @@ El objetivo de este módulo es dominar la documentación previa al compromiso. A
 
 ---
 
-## 🛠️ Laboratorios Disponibles
+## 🧪 Laboratorios Disponibles
 Consolida tu experiencia con estos casos prácticos:
 1.  👉 **[LAB 01: Alcance y planificación previos al compromiso](./labs/02_Laboratorio_Alcance_Resuelto.md)**
-2.  👉 **[LAB 02: Código de conducta profesional](./labs/Práctica_de_laboratorio-Código_de_conducta_personal.html)**
+2.  👉 **[LAB 02: Código de conducta profesional](./labs/Práctica_de_laboratorio-Código_de_conducta_personal.md)**
+3.  👉 **[LAB 03: Creación de un acuerdo de pentest](./labs/Práctica_de_laboratorio-Creación_de_un_acuerdo_de_prueba_de_penetración.md)**
 
 ---
 
