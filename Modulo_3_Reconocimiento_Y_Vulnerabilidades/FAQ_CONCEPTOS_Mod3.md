@@ -27,6 +27,12 @@ A diferencia de TCP (que usa el saludo de 3 vías), UDP no tiene estado. Si un p
 Significa que la vulnerabilidad en un componente afecta a otros sistemas fuera de su control.
 *   **Ejemplo:** Una vulnerabilidad en un hipervisor (ESXi) que permite saltar a las máquinas virtuales que aloja. El alcance ha cambiado del host a los invitados.
 
+### 6. ¿Cuándo debo usar Scapy en lugar de Nmap?
+Nmap es excelente para tareas estándar (escanear 1000 puertos, detectar versiones). **Scapy** se usa cuando necesitas un control quirúrgico: enviar un paquete TCP con banderas exóticas, inyectar datos en un payload específico o simular un ataque que Nmap no soporta de forma nativa.
+
+### 7. ¿El "Sniffing" es siempre reconocimiento pasivo?
+Depende. Si solo escuchas el tráfico que llega de forma natural a tu interfaz (modo promiscuo en un hub o vía un puerto mirror), es **pasivo**. Si realizas ataques de envenenamiento ARP (ARP Spoofing) para forzar que el tráfico pase por ti, se convierte en una técnica **activa**.
+
 ---
 ### 🛠️ Quick Cheat Sheet: Herramientas DNS
 | Herramienta | Uso Principal | Comando Rápido |

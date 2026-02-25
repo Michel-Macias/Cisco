@@ -9,8 +9,9 @@ Este documento sirve para trackear el progreso de revisión de los laboratorios 
 | **L3.1.1** | [Google Dorking & Búsquedas Avanzadas](./labs/LAB_3.1.1_Google_Dorking.md) | ✅ Completado | [📄 Leer](./labs/LAB_3.1.1_Google_Dorking.md) | Revisar operadores `site:`, `filetype:`, `intitle:`. |
 | **L3.1.2** | [DNS Recon (nslookup, whois, dig)](./labs/LAB_3.1.2_DNS_Recon.md) | ✅ Completado | [📄 Leer](./labs/LAB_3.1.2_DNS_Recon.md) | Comparar resultados de nslookup vs dig y rDNS. |
 | **L3.1.3** | [OSINT Automatizado (SpiderFoot & Recon-ng)](./labs/LAB_3.1.3_OSINT_Tools.md) | ✅ Completado | [📄 Leer](./labs/LAB_3.1.3_OSINT_Tools.md) | Configuración de módulos y análisis de footprints. |
-| **L3.1.4** | [OSINT de Empleados y Organización] | ⏳ Pendiente | ❌ No | Recolección de emails y perfiles públicos. |
-| **L3.1.5** | [Certificados SSL (Crt.sh)] | ⏳ Pendiente | ❌ No | Enumeración de subdominios vía transparencia de certificados. |
+| **L3.1.4** | [OSINT de Empleados](./labs/LAB_3.1.4_Employee_Recon.md) | ✅ Completado | [📄 Leer](./labs/LAB_3.1.4_Employee_Recon.md) | Recolección de emails y perfiles públicos. |
+| **L3.1.4b**| [OSINT de la Organización](./labs/LAB_3.1.4b_Organization_Recon.md) | ✅ Completado | [📄 Leer](./labs/LAB_3.1.4b_Organization_Recon.md) | Recolección de información general de la organización. |
+| **L3.1.5** | [Certificados SSL (Crt.sh)](./labs/LAB_3.1.5_SSL_Certificates.md) | ✅ Completado | [📄 Leer](./labs/LAB_3.1.5_SSL_Certificates.md) | Enumeración de subdominios vía transparencia de certificados. |
 
 ---
 
@@ -19,8 +20,8 @@ Este documento sirve para trackear el progreso de revisión de los laboratorios 
 - [x] Procesar `Lab_Advanced_Searches.html` y generar `LAB_3.1.1_Google_Dorking.md`.
 - [x] Procesar `Lab_DNS_Lookup.html` y generar `LAB_3.1.2_DNS_Recon.md`.
 - [x] Analizar `Lab_Using_OSINT_Tools.html` y generar `LAB_3.1.3_OSINT_Tools.md`.
-- [ ] Documentar OSINT de empleados y organización.
-- [ ] Investigar y documentar `Crt.sh` y transparencia de certificados.
+- [x] Documentar OSINT de empleados y organización.
+- [x] Investigar y documentar `Crt.sh` y transparencia de certificados.
 - [ ] Integrar capturas de pantalla o ejemplos reales en la documentación.
 
 ---

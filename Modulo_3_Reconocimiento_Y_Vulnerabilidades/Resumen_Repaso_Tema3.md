@@ -13,6 +13,10 @@ mindmap
       DNS (nslookup/dig)
       Whois (IP/Dominio)
       OSINT
+    Reconocimiento Activo
+      Nmap (Escaneo)
+      Scapy (Paquetes)
+      Masscan (Velocidad)
     Desafíos de Escaneo
       Timing (Producción)
       Protocolos (UDP/TCP)
@@ -41,7 +45,18 @@ El reconocimiento pasivo es el arte de obtener información sin interactuar dire
 
 ---
 
-## 2. 🛡️ Análisis de Vulnerabilidades (Vulnerability Scanning)
+## 2. ⚡ Reconocimiento Activo y Forjado de Paquetes
+
+A diferencia del pasivo, el reconocimiento activo interactúa directamente con el objetivo.
+
+### Herramientas de Escaneo y Manipulación:
+*   **Nmap (Network Mapper):** El estándar para escaneo de puertos, detección de OS y enumeración de servicios.
+*   **Scapy:** Framework de Python para forjar paquetes a medida. Permite inyectar cualquier valor en las cabeceras TCP/IP para probar respuestas de red.
+*   **Masscan:** Escáner de puerto asíncrono diseñado para velocidades extremas (Internet-scale scanning).
+
+---
+
+## 3. 🛡️ Análisis de Vulnerabilidades (Vulnerability Scanning)
 
 El escaneo automatizado vincula la información del reconocimiento con bases de datos de fallos conocidos.
 
