@@ -1,0 +1,53 @@
+# Gitignore para proteger el repositorio de Cisco Ethical Hacker
+# Evitar que se suban informes, resultados u hojas de datos sensibles
+
+# Formatos de archivos de evidencia comunes
+*.csv
+*.txt
+*.pdf
+*.log
+*.html
+*.json
+*.xml
+*.sqlite
+*.db
+*.rc
+*.m4a
+
+# Imágenes y capturas de pantalla
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.webp
+
+# Directorios de resultados y evidencias
+[Ee]videncias/
+[Ee]vidence/
+[Rr]esults/
+[Rr]eports/
+[Ii]nformes/
+[Ll]ogs/
+[Tt]mp/
+temp/
+
+# Excepciones (archivos que sí deben estar en el repositorio)
+!README.md
+!*.md
+!*.pcapng
+!*.yml
+!*.yaml
+!*.dockerfile
+!docker-composer.yml
+!*.py
+!*.sh
+!*.js
+!*.bash
+!*.c
+!*.cpp
+!*.h
+!*.java
+!*.go
+!*.rs
+!Makefile
+!CMakeLists.txt

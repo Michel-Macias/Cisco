@@ -130,15 +130,50 @@ SUMMARY
 
 ---
 
+## 🚀 Paso 6: Uso Avanzado y Automatización (Ronda con "Esteroides")
+
+Recon-ng destaca por su capacidad de escalar una investigación de 1 a 100 mediante la automatización y el uso de fuentes de datos de alta confianza.
+
+### 1. Gestión de API Keys
+Muchos módulos potentes (Shodan, Censys, HaveIBeenPwned) requieren una llave de API para funcionar.
+```bash
+[recon-ng][default] > keys add builtwith_api <tu_llave_aqui>
+[recon-ng][default] > keys list
+```
+
+### 2. La Base de Datos Relacional
+A diferencia de otras herramientas, Recon-ng guarda los datos de forma estructurada. Puedes ver el esquema de la base de datos en cualquier momento:
+```bash
+[recon-ng][default] > db schema
+[recon-ng][default] > show hosts
+[recon-ng][default] > show contacts
+```
+
+### 3. Automatización con Scripts de Recursos (.rc)
+Para evitar escribir los mismos comandos una y otra vez, puedes agruparlos en un archivo y ejecutarlos secuencialmente. Esto es lo que llamamos la **"Ronda con Esteroides"**.
+
+| Módulos de Alta Eficacia | Función |
+| :--- | :--- |
+| `recon/domains-hosts/hackertarget` | Descubre subdominios mediante registros DNS históricos. |
+| `recon/domains-hosts/certificate_transparency` | Utiliza logs de certificados SSL (espectacular para encontrar servicios ocultos). |
+| `recon/domains-contacts/whois_pocs` | Extrae contactos de administración a partir del Whois. |
+| `discovery/info_disclosure/interesting_files` | Busca `robots.txt`, `sitemap.xml` y otros ficheros sensibles. |
+
+**Ejecución masiva desde consola:**
+```bash
+recon-ng -r mi_script_de_ataque.rc
+```
+
 ---
 
 ## 🧠 Reflexión del Mentor
-**¿Por qué usar Recon-ng en lugar de simples comandos de consola?**
-> *Respuesta*: Por la **gestión de datos**. Recon-ng no es solo un recolector; es un gestor de base de datos. Cada host que encuentra Bing, cada IP que resuelve Google, y cada contacto que extrae LinkedIn se guarda en tablas relacionales. Esto te permite, al final del día, generar un informe completo consolidando fuentes dispares en un único lugar sin tener que copiar y pegar manualmente.
+
+**¿Por qué usar Recon-ng en lugar de simples comandos de consola o rastreadores simples?**
+> *Respuesta*: Por la **Escalabilidad y Persistencia**. Mientras que `theHarvester` es un "rastrillazo" rápido cuyos resultados se pierden, Recon-ng construye una **Base de Inteligencia**. Al final de la fase pasiva, habrás cruzado datos de 10 fuentes distintas que se han auto-enriquecido entre sí (ej: el host que encontró Bing ahora tiene una IP gracias a otro módulo).
 
 ---
 
-## 📑 Resumen de Flujo de Trabajo (Cheat Sheet)
+## 📑 Resumen de Flujo de Trabajo (Cheat Sheet Avanzado)
 
 | Comando | Función |
 | :--- | :--- |
@@ -146,8 +181,10 @@ SUMMARY
 | `marketplace install <modulo>` | Descargar el módulo desde el repositorio oficial. |
 | `modules load <modulo>` | Cargar el módulo seleccionado para su uso. |
 | `options set SOURCE <objetivo>` | Definir el dominio o IP sobre el cual actuar. |
-| `run` | Iniciar la ejecución del módulo. |
-| `show hosts` | Visualizar todos los subdominios descubiertos en el workspace. |
+| `db schema` | Visualizar la estructura de tablas de la base de datos. |
+| `keys add <api_key> <valor>` | Configurar credenciales externas para módulos premium. |
+| `recon-ng -r <script>.rc` | Ejecutar una serie de comandos automatizados. |
+| `show hosts / contacts` | Visualizar la inteligencia recolectada. |
 
 ---
 *Este laboratorio es una adaptación educativa del currículo oficial de Cisco para el curso de Ethical Hacker.*
