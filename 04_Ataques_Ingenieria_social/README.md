@@ -66,9 +66,11 @@ La ingeniería social es el arte de la manipulación. En este módulo, exploramo
 3.  👉 **[LAB 03: SET Credential Harvester](./practica/lab_03_set_credential_harvester.md)** 🆕
     *   Clonación del portal Pixel Paradise y captura de credenciales.
     *   🏗️ [Infraestructura Docker](./infraestructura/lab_set_credential_harvester/README.md)
+    *   🎯 **[Memoria Técnica (Portfolio)](../PORTFOLIO_CIBERSEGURIDAD/Memoria_Lab_4.3_SET_Credential_Harvester.md)**
 4.  👉 **[LAB 04: BeEF XSS Hooking](./practica/lab_04_beef_xss_hooking.md)** 🆕
     *   Explotación de XSS para controlar navegadores con BeEF.
     *   🏗️ [Infraestructura Docker](./infraestructura/lab_beef_xss/README.md)
+    *   🎯 **[Memoria Técnica (Portfolio)](../PORTFOLIO_CIBERSEGURIDAD/Memoria_Lab_4.4_BeEF_XSS_Hooking.md)**
 
 ### 🏗️ Infraestructura Base
 5.  👉 **[Escenario Pixel Paradise (Base)](./infraestructura/README.md)**

@@ -42,31 +42,9 @@ services:
     stdin_open: true
     ports:
       - "127.0.0.1:3000:3000"
-    command: >
-      bash -c "
-        echo '[*] Instalando BeEF y dependencias...' ;
-        apt-get update -qq ;
-        DEBIAN_FRONTEND=noninteractive apt-get install -yqq
-          beef-xss curl wget net-tools > /dev/null 2>&1 ;
-        echo '' ;
-        echo '===========================================' ;
-        echo '  Lab BeEF - Browser Exploitation Framework' ;
-        echo '===========================================' ;
-        echo '' ;
-        echo '  Sitio vulnerable (XSS):' ;
-        echo '    http://172.32.0.20  (interno)' ;
-        echo '    http://localhost:8083 (desde host)' ;
-        echo '' ;
-        echo '  Panel de BeEF:' ;
-        echo '    http://localhost:3000/ui/panel' ;
-        echo '    User: beef | Pass: beef123' ;
-        echo '' ;
-        echo '  Para empezar:' ;
-        echo '    docker exec -it lab_beef_atacante bash' ;
-        echo '    beef-xss' ;
-        echo '===========================================' ;
-        tail -f /dev/null
-      "
+    volumes:
+      - ./setup_beef.sh:/setup_beef.sh
+    command: bash /setup_beef.sh
     networks:
       lab_beef:
         ipv4_address: 172.32.0.10
