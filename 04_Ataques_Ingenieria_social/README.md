@@ -56,12 +56,23 @@ La ingeniería social es el arte de la manipulación. En este módulo, exploramo
 
 ## 🛠️ Laboratorios Disponibles
 
+### 📚 Guías Teóricas (sin Docker)
 1.  👉 **[LAB 01: Social-Engineer Toolkit (SET)](./practica/lab_01_set_toolkit.md)**
-    *   Clonación de sitios web y captura de credenciales.
+    *   Guía de referencia: Spear-Phishing y Credential Harvesting.
 2.  👉 **[LAB 02: Browser Exploitation Framework (BeEF)](./practica/lab_02_beef_framework.md)**
-    *   Control de navegadores y ganchos XSS avanzados.
-3.  👉 **[Infraestructura: Escenario Pixel Paradise](./infraestructura/README.md)**
-    *   Despliegue de entorno vulnerable con Docker.
+    *   Guía de referencia: Hooking y módulos de BeEF.
+
+### 🐳 Labs Prácticos (con Docker)
+3.  👉 **[LAB 03: SET Credential Harvester](./practica/lab_03_set_credential_harvester.md)** 🆕
+    *   Clonación del portal Pixel Paradise y captura de credenciales.
+    *   🏗️ [Infraestructura Docker](./infraestructura/lab_set_credential_harvester/README.md)
+4.  👉 **[LAB 04: BeEF XSS Hooking](./practica/lab_04_beef_xss_hooking.md)** 🆕
+    *   Explotación de XSS para controlar navegadores con BeEF.
+    *   🏗️ [Infraestructura Docker](./infraestructura/lab_beef_xss/README.md)
+
+### 🏗️ Infraestructura Base
+5.  👉 **[Escenario Pixel Paradise (Base)](./infraestructura/README.md)**
+    *   Despliegue base del entorno vulnerable con Docker.
 
 ---
 *Este módulo es fundamental para entender que la seguridad no es solo código, sino también psicología.*

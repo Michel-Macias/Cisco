@@ -36,23 +36,30 @@ El objetivo de este módulo es dominar la documentación previa al compromiso. A
 ## 🧠 Contenidos Destacados
 
 ### 📝 Documentación Contractual
-*   **[SOW (Statement of Work)](./recursos/muestra_sow.md):** El "qué". Define los servicios, entregables y plazos.
-*   **[RoE (Rules of Engagement)](./recursos/muestra_roe.md):** El "cómo". Reglas tácticas, horarios de ataque y contactos de emergencia.
-*   **[NDA (Non-Disclosure Agreement)](./recursos/muestra_nda.md):** La garantía de confidencialidad de los datos hallados.
+*   **SOW (Statement of Work):** El "qué". Define los servicios, entregables y plazos.
+*   **RoE (Rules of Engagement):** El "cómo". Reglas tácticas, horarios y contactos.
+*   **NDA (Non-Disclosure Agreement):** La garantía de confidencialidad.
 
 ### 🎯 Definición de Alcance (Scoping)
 *   Identificación de activos críticos.
-*   Gestión de exclusiones (ej: servidores de backup, sistemas de soporte vital).
-*   Determinación de la ventana de ejecución para minimizar el impacto en el negocio.
+*   Gestión de exclusiones y activos out-of-scope.
+*   Determinación de la ventana de ejecución.
 
 ---
 
-## 🧪 Laboratorios Disponibles
-Consolida tu experiencia con estos casos prácticos:
-1.  👉 **[LAB 01: Alcance y Planificación](./practica/lab_01_alcance_planificacion.md)** ([Versión Resuelta](./practica/lab_01_alcance_planificacion_resuelto.md))
+## 🧪 Laboratorios y Prácticas
+
+### 🔬 02. Planificación
+1.  👉 **[LAB 01: Alcance y Planificación](./practica/lab_01_alcance_planificacion.md)**
 2.  👉 **[LAB 02: Código de Conducta Profesional](./practica/lab_02_codigo_conducta.md)**
 3.  👉 **[LAB 03: Creación de un Acuerdo de Pentest](./practica/lab_03_acuerdo_pentest.md)**
 
+---
+
+## 📚 Guías de Sección
+- 📖 **[Índice de Teoría](./teoria/README.md)**
+- 🛠️ **[Índice de Práctica](./practica/README.md)**
+- 📄 **[Índice de Recursos](./recursos/README.md)**
 
 ---
 

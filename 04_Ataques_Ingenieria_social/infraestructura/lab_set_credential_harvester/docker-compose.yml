@@ -1,0 +1,89 @@
+###############################################################################
+# Lab SET Credential Harvester
+# Escenario: Captura de credenciales con clonación de sitio web
+#
+# Red: 172.31.0.0/24 (lab_set)
+#   - Atacante (Kali + SET)      → 172.31.0.10
+#   - Víctima (Navegador)        → Accede desde el host vía http://localhost:8082
+#   - Sitio legítimo (target)    → 172.31.0.20 (Pixel Paradise)
+###############################################################################
+
+services:
+
+  # =========================================================================
+  # SITIO LEGÍTIMO (lo que el atacante va a clonar)
+  # =========================================================================
+
+  pixel-paradise:
+    image: php:7.4-apache
+    container_name: lab_set_target
+    hostname: pixelparadise-corp
+    volumes:
+      - ../target_site:/var/www/html:ro
+    ports:
+      - "127.0.0.1:8082:80"
+    networks:
+      lab_set:
+        ipv4_address: 172.31.0.20
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+
+  # =========================================================================
+  # ATACANTE (Kali con SET preinstalado)
+  # =========================================================================
+
+  kali-set:
+    image: kalilinux/kali-rolling
+    container_name: lab_set_atacante
+    hostname: kali-attacker
+    tty: true
+    stdin_open: true
+    ports:
+      - "127.0.0.1:8888:80"
+    command: >
+      bash -c "
+        echo '[*] Instalando SET y dependencias...' ;
+        apt-get update -qq ;
+        DEBIAN_FRONTEND=noninteractive apt-get install -yqq
+          git python3 python3-pip apache2 curl wget net-tools
+          set > /dev/null 2>&1 ;
+        echo '' ;
+        echo '===========================================' ;
+        echo '  Lab SET - Credential Harvester Attack' ;
+        echo '===========================================' ;
+        echo '' ;
+        echo '  Sitio legítimo (target):' ;
+        echo '    http://172.31.0.20  (interno)' ;
+        echo '    http://localhost:8082 (desde host)' ;
+        echo '' ;
+        echo '  Tu sitio clonado se servirá en:' ;
+        echo '    http://localhost:8888 (desde host)' ;
+        echo '' ;
+        echo '  Para empezar:' ;
+        echo '    docker exec -it lab_set_atacante bash' ;
+        echo '    setoolkit' ;
+        echo '===========================================' ;
+        tail -f /dev/null
+      "
+    networks:
+      lab_set:
+        ipv4_address: 172.31.0.10
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 512M
+
+# =============================================================================
+# RED AISLADA
+# =============================================================================
+networks:
+  lab_set:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.31.0.0/24
+          gateway: 172.31.0.1

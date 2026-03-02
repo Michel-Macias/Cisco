@@ -1,0 +1,88 @@
+###############################################################################
+# Lab BeEF - Browser Exploitation Framework
+# Escenario: XSS Hooking con BeEF sobre Pixel Paradise
+#
+# Red: 172.32.0.0/24 (lab_beef)
+#   - Atacante (Kali + BeEF)     → 172.32.0.10
+#   - Sitio vulnerable (target)  → 172.32.0.20 (Pixel Paradise con XSS)
+###############################################################################
+
+services:
+
+  # =========================================================================
+  # SITIO VULNERABLE (Pixel Paradise con XSS)
+  # =========================================================================
+
+  pixel-paradise-vuln:
+    image: php:7.4-apache
+    container_name: lab_beef_target
+    hostname: pixelparadise-vuln
+    volumes:
+      - ./target_site_hooked:/var/www/html
+    ports:
+      - "127.0.0.1:8083:80"
+    networks:
+      lab_beef:
+        ipv4_address: 172.32.0.20
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+
+  # =========================================================================
+  # ATACANTE (Kali con BeEF preinstalado)
+  # =========================================================================
+
+  kali-beef:
+    image: kalilinux/kali-rolling
+    container_name: lab_beef_atacante
+    hostname: kali-beef
+    tty: true
+    stdin_open: true
+    ports:
+      - "127.0.0.1:3000:3000"
+    command: >
+      bash -c "
+        echo '[*] Instalando BeEF y dependencias...' ;
+        apt-get update -qq ;
+        DEBIAN_FRONTEND=noninteractive apt-get install -yqq
+          beef-xss curl wget net-tools > /dev/null 2>&1 ;
+        echo '' ;
+        echo '===========================================' ;
+        echo '  Lab BeEF - Browser Exploitation Framework' ;
+        echo '===========================================' ;
+        echo '' ;
+        echo '  Sitio vulnerable (XSS):' ;
+        echo '    http://172.32.0.20  (interno)' ;
+        echo '    http://localhost:8083 (desde host)' ;
+        echo '' ;
+        echo '  Panel de BeEF:' ;
+        echo '    http://localhost:3000/ui/panel' ;
+        echo '    User: beef | Pass: beef123' ;
+        echo '' ;
+        echo '  Para empezar:' ;
+        echo '    docker exec -it lab_beef_atacante bash' ;
+        echo '    beef-xss' ;
+        echo '===========================================' ;
+        tail -f /dev/null
+      "
+    networks:
+      lab_beef:
+        ipv4_address: 172.32.0.10
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 1G
+
+# =============================================================================
+# RED AISLADA
+# =============================================================================
+networks:
+  lab_beef:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.32.0.0/24
+          gateway: 172.32.0.1

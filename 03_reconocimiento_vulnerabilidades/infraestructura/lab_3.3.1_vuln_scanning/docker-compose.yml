@@ -1,0 +1,193 @@
+###############################################################################
+# Lab 3.3.1 - Metodología y Lógica del Escaneo de Vulnerabilidades
+# Escenario: Planta Industrial con dispositivos heterogéneos
+#
+# Red: 172.30.0.0/24 (lab_industrial)
+#   - Servidor Linux moderno    → 172.30.0.10
+#   - Servidor Windows (sim.)   → 172.30.0.11
+#   - Impresora de red (sim.)   → 172.30.0.20
+#   - PLC / IoT antiguo (sim.)  → 172.30.0.21
+#   - Firewall de baja potencia → 172.30.0.254
+#   - Atacante (Nmap)            → 172.30.0.100
+###############################################################################
+
+services:
+
+  # =========================================================================
+  # SERVIDORES MODERNOS (robustos)
+  # =========================================================================
+
+  servidor-linux:
+    image: ubuntu:22.04
+    container_name: lab331_servidor_linux
+    hostname: srv-linux-prod
+    command: >
+      bash -c "
+        apt-get update -qq &&
+        DEBIAN_FRONTEND=noninteractive apt-get install -yqq
+        openssh-server apache2 mysql-server netcat-openbsd curl > /dev/null 2>&1 &&
+        echo 'root:P@ssw0rd123!' | chpasswd &&
+        sed -i 's/#PermitRootLogin.*/PermitRootLogin yes/' /etc/ssh/sshd_config &&
+        service ssh start &&
+        service apache2 start &&
+        service mysql start &&
+        echo '<h1>Protego Industrial Systems - Intranet</h1><p>Server: srv-linux-prod</p>' > /var/www/html/index.html &&
+        echo '[OK] Servidor Linux listo (SSH:22 HTTP:80 MySQL:3306)' &&
+        tail -f /dev/null
+      "
+    networks:
+      lab_industrial:
+        ipv4_address: 172.30.0.10
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 384M
+
+  servidor-windows:
+    image: dperson/samba
+    container_name: lab331_servidor_windows
+    hostname: srv-win-prod
+    environment:
+      - USERID=1000
+      - GROUPID=1000
+    command: '-u "admin;Password1" -s "compartido;/share;yes;no;no;admin" -p'
+    networks:
+      lab_industrial:
+        ipv4_address: 172.30.0.11
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 128M
+
+  # =========================================================================
+  # DISPOSITIVOS FRÁGILES (IoT / OT)
+  # =========================================================================
+
+  impresora-red:
+    image: alpine:3.18
+    container_name: lab331_impresora_red
+    hostname: printer-hp-4250
+    volumes:
+      - ./html/printer.html:/www/index.html:ro
+    command: >
+      sh -c "
+        apk add --no-cache socat busybox-extras > /dev/null 2>&1 ;
+        socat TCP-LISTEN:9100,fork,reuseaddr SYSTEM:'echo JetDirect Ready' &
+        echo '[OK] Impresora HP lista (HTTP:80, JetDirect:9100)' ;
+        httpd -f -p 80 -h /www
+      "
+    networks:
+      lab_industrial:
+        ipv4_address: 172.30.0.20
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 32M
+          cpus: '0.10'
+
+  plc-iot:
+    image: alpine:3.18
+    container_name: lab331_plc_iot
+    hostname: plc-siemens-s7
+    volumes:
+      - ./html/plc.html:/www/index.html:ro
+    command: >
+      sh -c "
+        apk add --no-cache socat busybox-extras > /dev/null 2>&1 ;
+        socat TCP-LISTEN:502,fork,reuseaddr SYSTEM:'echo MODBUS_OK' &
+        socat TCP-LISTEN:102,fork,reuseaddr SYSTEM:'echo S7COMM_OK' &
+        echo '[OK] PLC Siemens listo (HTTP:80, Modbus:502, S7comm:102)' ;
+        httpd -f -p 80 -h /www
+      "
+    networks:
+      lab_industrial:
+        ipv4_address: 172.30.0.21
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 24M
+          cpus: '0.05'
+
+  # =========================================================================
+  # FIREWALL DE BAJA POTENCIA (rate-limiting con iptables)
+  # =========================================================================
+
+  firewall:
+    image: alpine:3.18
+    container_name: lab331_firewall
+    hostname: fw-edge
+    privileged: true
+    volumes:
+      - ./html/firewall.html:/www/index.html:ro
+    command: >
+      sh -c "
+        apk add --no-cache iptables iproute2 busybox-extras > /dev/null 2>&1 ;
+        echo 1 > /proc/sys/net/ipv4/ip_forward 2>/dev/null || true ;
+        iptables -A INPUT -p tcp --syn -m limit --limit 20/sec --limit-burst 40 -j ACCEPT 2>/dev/null ;
+        iptables -A INPUT -p tcp --syn -j DROP 2>/dev/null ;
+        iptables -A INPUT -p icmp -m limit --limit 5/sec -j ACCEPT 2>/dev/null ;
+        iptables -A INPUT -p icmp -j DROP 2>/dev/null ;
+        echo '[OK] Firewall listo (HTTP:8080, rate-limit: 20 SYN/sec)' ;
+        httpd -f -p 8080 -h /www
+      "
+    networks:
+      lab_industrial:
+        ipv4_address: 172.30.0.254
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 32M
+          cpus: '0.10'
+
+  # =========================================================================
+  # ESTACIÓN ATACANTE (Nmap preinstalado)
+  # =========================================================================
+
+  atacante:
+    image: instrumentisto/nmap
+    container_name: lab331_atacante
+    hostname: kali-auditor
+    entrypoint: ""
+    command: >
+      sh -c "
+        echo '========================================' ;
+        echo ' Lab 3.3.1 - Estacion de Auditoria' ;
+        echo '========================================' ;
+        echo '' ;
+        echo ' Red Industrial: 172.30.0.0/24' ;
+        echo '' ;
+        echo ' Objetivos:' ;
+        echo '   Servidor Linux  : 172.30.0.10' ;
+        echo '   Servidor Windows: 172.30.0.11' ;
+        echo '   Impresora HP    : 172.30.0.20' ;
+        echo '   PLC Siemens     : 172.30.0.21' ;
+        echo '   Firewall Edge   : 172.30.0.254' ;
+        echo '' ;
+        echo ' Conecta: docker exec -it lab331_atacante sh' ;
+        echo '========================================' ;
+        tail -f /dev/null
+      "
+    networks:
+      lab_industrial:
+        ipv4_address: 172.30.0.100
+    restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 256M
+
+# =============================================================================
+# RED AISLADA - Segmento OT/IT de planta industrial
+# =============================================================================
+networks:
+  lab_industrial:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.30.0.0/24
+          gateway: 172.30.0.1
