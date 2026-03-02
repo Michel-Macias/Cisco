@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  pixel-paradise-web:
+    image: php:7.4-apache
+    container_name: pixel_paradise_target
+    ports:
+      - "8081:80"
+    volumes:
+      - ./target_site:/var/www/html
+    restart: unless-stopped
+    networks:
+      - lab_network
+
+networks:
+  lab_network:
+    driver: bridge
+
+# Guía de Inicio Rápido:
+# 1. cd 04_Ataques_Ingenieria_social/infraestructura
+# 2. docker compose up -d
+# 3. Accede a http://localhost:8081 en tu navegador (víctima).
+# 4. Usa BeEF para enganchar a la víctima inyectando el script en index.php.

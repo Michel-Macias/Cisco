@@ -24,8 +24,9 @@ El repositorio ha sido reorganizado siguiendo un estándar de **Seguridad y Meto
 | **01** | [🛡️ Marcos de Pentesting](./01_marcos_pentest/) | OSSTMM, NIST, PTES, Ética y Legalidad. | ✅ Finalizado |
 | **02** | [📋 Planificación y Alcance](./02_planificacion_alcance/) | SOW, RoE, NDA, Gestión de Proyectos. | ✅ Finalizado |
 | **03** | [🔍 Reconocimiento](./03_reconocimiento_vulnerabilidades/) | OSINT, Escaneo Activo, Análisis de Vuln. | ✅ Finalizado |
-| **04** | [🌐 Seg. en Infraestructura](./04_infraestructura_seguridad/) | Firewalling, IDS/IPS, Hardening de Red. | 🛠️ En Repaso |
+| **04** | [🎭 Ing. Social](./04_Ataques_Ingenieria_social/) | Phishing, SET, BeEF, Psicología de la Influencia. | 🛠️ En Proceso |
 | **06** | [💥 Explotación Web/Apps](./06_explotacion_web_app/) | Inyección, OWASP Top 10, Labs Integrados. | 🛠️ En Repaso |
+| **09** | [🌐 Seg. en Infraestructura](./09_infraestructura_seguridad/) | Firewalling, IDS/IPS, Hardening de Red. | ✅ Finalizado |
 | **99** | [🐳 Entorno Docker](./99_entorno_docker/) | Laboratorio de pruebas de penetración unificado. | 🚀 Activo |
 
 ### Organización Interna de los Módulos
