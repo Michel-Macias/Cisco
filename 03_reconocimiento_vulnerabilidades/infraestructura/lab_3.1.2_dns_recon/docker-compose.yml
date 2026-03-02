@@ -7,8 +7,8 @@ services:
     environment:
       - BIND9_USER=root
     ports:
-      - "53:53/tcp"
-      - "53:53/udp"
+      - "127.0.0.1:53:53/tcp"
+      - "127.0.0.1:53:53/udp"
     volumes:
       - ./config:/etc/bind
     restart: unless-stopped

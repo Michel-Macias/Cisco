@@ -1,0 +1,22 @@
+$TTL    604800
+@       IN      SOA     ns1.target.local. admin.target.local. (
+                              2         ; Serial
+                         604800         ; Refresh
+                          86400         ; Retry
+                        2419200         ; Expire
+                         604800 )       ; Negative Cache TTL
+;
+@       IN      NS      ns1.target.local.
+@       IN      A       172.30.0.10
+@       IN      MX      10 mail.target.local.
+
+ns1     IN      A       172.30.0.10
+mail    IN      A       172.30.0.11
+www     IN      A       172.30.0.10
+dev     IN      A       172.30.0.20
+admin   IN      A       172.30.0.30
+ftp     IN      A       172.30.0.40
+
+; Registro TXT con información sensible (flag de lab)
+@       IN      TXT     "v=spf1 include:_spf.google.com ~all"
+secret  IN      TXT     "INTERNAL_TOKEN=9922-XDFG-OOPA"

@@ -6,10 +6,10 @@
 
 ## 🧪 Laboratorios
 
-| # | Lab | Tema | Infra Docker |
-|:--|:---|:---|:---|
-| 3.3.1 | [Metodología y Lógica del Escaneo](./labs/lab_3.3.1_vuln_scanning_logic.md) | Topología, dispositivos frágiles, rendimiento | 🐳 [Docker](../../infraestructura/lab_3.3.1_vuln_scanning/) |
-| 3.4.1 | [Investigación de Fuentes de Vulnerabilidades](./labs/lab_3.4.1_investigacion_fuentes.md) | CVE, CWE, CVSS, NVD | — |
+| # | Lab | Tema | Infra Docker | Memoria Final |
+|:--|:---|:---|:---|:---|
+| 3.3.1 | [Escaneo Industrial](./labs/lab_3.3.1_vuln_scanning_logic.md) | Escaneo de PLCs y lógica de red OT. | 🐳 [Docker](../../infraestructura/lab_3.3.1_vuln_scanning/) | ✅ [Memoria Final](../../../PORTFOLIO_CIBERSEGURIDAD/Memoria_Lab_3.3.1_Industrial_Scanning.md) |
+| 3.4.1 | [Investigación de Fuentes de Vulnerabilidades](./labs/lab_3.4.1_investigacion_fuentes.md) | CVE, CWE, CVSS, NVD | — | |
 
 ---
 
