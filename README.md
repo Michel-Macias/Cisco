@@ -1,49 +1,34 @@
-# 🎓 Cisco Ethical Hacker: Itinerario de Especialización
+# 🛡️ Cisco Ethical Hacker Course - Labs & Resources
 
-> **Repositorio Unificado de Formación y Mentoring en Ciberseguridad**
+## 📝 Descripción
+Este repositorio contiene una colección exhaustiva de materiales, laboratorios prácticos y recursos teóricos desarrollados durante el curso de **Hacker Ético de Cisco**. El objetivo es proporcionar un entorno de aprendizaje estructurado para dominar las fases de un pentest, desde la planificación hasta la explotación y el reporte.
 
-Este repositorio centraliza el conocimiento, laboratorios, metodologías y herramientas desarrollados durante el curso de **Cisco Ethical Hacker**, estructurado para un perfil de Administración de Sistemas Informáticos en Red y Hacking Ético.
+## 🚀 Estructura del Proyecto
+El repositorio está organizado por módulos temáticos:
 
----
+- **01_marcos_pentest:** Metodologías (OSSTMM, NIST, OWASP) y marcos de trabajo.
+- **02_planificacion_alcance:** Gestión de acuerdos (NDA, SOW, RoE) y definición de objetivos.
+- **03_reconocimiento_vulnerabilidades:** Técnicas de OSINT, escaneo activo (Nmap, Scapy) y análisis de vulnerabilidades.
+- **04_Ataques_Ingenieria_social:** Uso de SET (Social Engineering Toolkit) y BeEF para ataques de phishing y hooking.
+- **06_explotacion_web_app:** Explotación de vulnerabilidades OWASP Top 10 en entornos como DVWA y Juice Shop.
+- **09_infraestructura_seguridad:** Configuración de proxies (Squid) y respuesta ante incidentes.
+- **99_entorno_docker:** Infraestructura *Infrastructure as Code* (IaC) para desplegar laboratorios de ataque/defensa de forma aislada.
 
-## 👨‍💻 Perfil del Auditor
-*   **Auditor:** Michel Macias (SysAdmin & Security Researcher)
-*   **Mentor:** Antigravity (IA - Google Deepmind)
-*   **Entorno de Trabajo:** Linux (Host)
+## 🛠️ Tecnologías y Herramientas
+- **Entornos:** Docker, Kali Linux.
+- **Herramientas de Red:** Nmap, Scapy, Wireshark, Squid.
+- **Frameworks de Ataque:** SET, BeEF, Metasploit.
+- **Objetivos Vulnerables:** DVWA, OWASP Juice Shop.
 
----
-
-## 📚 Estructura del Proyecto
-
-El repositorio ha sido reorganizado siguiendo un estándar de **Seguridad y Metodología Profesional** para asegurar la coherencia en la formación.
-
-### Módulos de Aprendizaje
-
-| Módulo | Directorio | Contenidos Clave | Estado |
-| :--- | :--- | :--- | :--- |
-| **01** | [🛡️ Marcos de Pentesting](./01_marcos_pentest/) | OSSTMM, NIST, PTES, Ética y Legalidad. | ✅ Finalizado |
-| **02** | [📋 Planificación y Alcance](./02_planificacion_alcance/) | SOW, RoE, NDA, Gestión de Proyectos. | ✅ Finalizado |
-| **03** | [🔍 Reconocimiento](./03_reconocimiento_vulnerabilidades/) | OSINT, Escaneo Activo, Análisis de Vuln. | ✅ Finalizado |
-| **04** | [🎭 Ing. Social](./04_Ataques_Ingenieria_social/) | Phishing, SET, BeEF, Psicología de la Influencia. | 🛠️ En Proceso |
-| **06** | [💥 Explotación Web/Apps](./06_explotacion_web_app/) | Inyección, OWASP Top 10, Labs Integrados. | 🛠️ En Repaso |
-| **09** | [🌐 Seg. en Infraestructura](./09_infraestructura_seguridad/) | Firewalling, IDS/IPS, Hardening de Red. | ✅ Finalizado |
-| **99** | [🐳 Entorno Docker](./99_entorno_docker/) | Laboratorio de pruebas de penetración unificado. | 🚀 Activo |
-
-### Organización Interna de los Módulos
-Cada directorio de módulo mantiene una estructura estandarizada:
-*   📁 `teoria/`: Resúmenes teóricos y FAQs conceptuales.
-*   📁 `practica/`: Guías de laboratorio y guiones de ejecución.
-*   📁 `recursos/`: Material de apoyo, imágenes y documentos de muestra.
-*   📁 `infraestructura/`: Scripts y configuraciones Docker específicas.
+## 📦 Cómo usar este repositorio
+1. **Explorar los Módulos:** Cada carpeta contiene subcarpetas de `teoria`, `practica` y `recursos`.
+2. **Levantar el Laboratorio:**
+   Navega a `99_entorno_docker/01_infraestructura` y ejecuta:
+   ```bash
+   docker-compose up -d
+   ```
+3. **Consultar Memorias:** En `PORTFOLIO_CIBERSEGURIDAD` encontrarás informes detallados de los laboratorios completados.
 
 ---
-
-## 🛠️ Metodología de Trabajo
-Nuestra dinámica se basa en tres pilares:
-1.  **Enfoque de Consultoría:** Simulamos situaciones reales mediante la creación de documentos profesionales (SOW, RoE, Informes Ejecutivos).
-2.  **Aprendizaje Didáctico:** Los conceptos complejos se asientan en archivos `faq_conceptos.md` y repasos estructurados.
-3.  **Entornos Inmersivos:** Uso intensivo de contenedores para replicar escenarios de ataque y defensa sin comprometer el sistema host.
-
----
-*Este repositorio es un activo de conocimiento vivo. Evoluciona con cada módulo completado y cada laboratorio superado.*
-
+**Desarrollado por [Michel Macias](https://github.com/Michel-Macias)**
+*Google IT Certified SysAdmin | Cybersecurity Student*
